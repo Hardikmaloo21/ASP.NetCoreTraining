@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment1</title>
+</head>
+<body>
+
+<h1>Inventory</h1>
+
+<script>
+    const companyName = "MyInventory";
+    let warehouseLocation = "Jaipur";
+    var totalProducts = 3;
+
+    let products = [
+        { id: 1, name: "Laptop", price: 50000, quantity: 5 },
+        { id: 2, name: "Mobile", price: 20000, quantity: 10 },
+        { id: 3, name: "Headphones", price: 2000, quantity: 20 }
+    ];
+
+    function displayProducts() {
+        console.log("Product List:");
+        for (let i = 0; i < products.length; i++) {
+            console.log(
+                "ID:", products[i].id,
+                "Name:", products[i].name,
+                "Price:", products[i].price,
+                "Quantity:", products[i].quantity
+            );
+        }
+    }
+    function calculateInventoryValue() {
+        let totalValue = 0;
+
+        for (let i = 0; i < products.length; i++) {
+            totalValue += products[i].price * products[i].quantity;
+        }
+
+        return totalValue;
+    }
+
+    function applyDiscount(discountPercent = 10) {
+        for (let i = 0; i < products.length; i++) {
+            let discountAmount = products[i].price * (discountPercent / 100);
+            products[i].price -= discountAmount;
+        }
+    }
+
+    console.log("Before Block:");
+    console.log("Warehouse Location:", warehouseLocation);
+    console.log("Total Products:", totalProducts);
+
+    {
+        let warehouseLocation = "Delhi"; 
+        var totalProducts = 10;          
+
+        console.log("Inside Block:");
+        console.log("Warehouse Location:", warehouseLocation);
+        console.log("Total Products:", totalProducts);
+    }
+
+    console.log("After Block:");
+    console.log("Warehouse Location:", warehouseLocation); 
+    console.log("Total Products:", totalProducts);         
+
+    displayProducts();
+    console.log("Total Inventory Value:", calculateInventoryValue());
+
+    applyDiscount();
+    console.log("After 10% Discount:");
+    displayProducts();
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>JavaScript Arrow Functions Demo</title>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    margin:40px;
+    background:#f4f6f8;
+}
+
+h1{
+    color:#333;
+}
+
+button{
+    padding:10px 20px;
+    font-size:16px;
+    background:#007bff;
+    color:white;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#0056b3;
+}
+
+.result-box{
+    margin-top:20px;
+    padding:15px;
+    background:white;
+    border-radius:6px;
+    box-shadow:0 2px 6px rgba(0,0,0,0.1);
+}
+</style>
+
+</head>
+
+<body>
+
+<h1>JavaScript Arrow Functions Demo</h1>
+
+<button id="runBtn">Run Example</button>
+
+<div class="result-box">
+<ul id="output"></ul>
+</div>
+
+<script>
+
+// Number array
+const numbers = [1,2,3,4,5];
+
+// People array
+const people = [
+    {name : 'Alice', age : 25},
+    {name : 'Bob', age : 40},
+    {name : 'Charlie', age : 50},
+];
+
+// Button reference
+const runBtn = document.getElementById('runBtn');
+
+// Output reference
+const output = document.getElementById('output');
+
+// 1. MAP
+const squaredNumbers = numbers.map(num => num * num);
+
+// 2. FILTER
+const adults = people.filter(person => person.age >= 30);
+
+// 3. REDUCE
+const totalAge = people.reduce((sum, person) => sum + person.age, 0);
+
+runBtn.addEventListener('click', () => {
+
+    output.innerHTML = '';
+
+    const squaredList = document.createElement('li');
+    squaredList.textContent = 'Squared Numbers: ' + squaredNumbers.join(', ');
+    output.appendChild(squaredList);
+
+    const adultsList = document.createElement('li');
+    adultsList.textContent = 'Adults: ' + adults.map(a => a.name).join(', ');
+    output.appendChild(adultsList);
+
+    const totalAgeItem = document.createElement('li');
+    totalAgeItem.textContent = 'Total Age: ' + totalAge;
+    output.appendChild(totalAgeItem);
+
+});
+
+</script>
+
+</body>
+</html>

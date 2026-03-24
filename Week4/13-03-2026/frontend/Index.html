@@ -1,0 +1,612 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+<title>Smart Course Management</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#f4f4f4;
+padding:40px;
+}
+
+.container{
+width:900px;
+margin:auto;
+background:white;
+padding:20px;
+}
+
+input,button{
+padding:8px;
+margin:5px;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+margin-top:20px;
+}
+
+th,td{
+border:1px solid #ccc;
+padding:10px;
+text-align:center;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Smart Course Management System</h2>
+
+<input id="search" placeholder="Search course">
+<button onclick="searchCourse()">Search</button>
+
+<h3>Add Course</h3>
+
+<input id="name" placeholder="Course Name">
+<input id="dept" placeholder="CourseID">
+<input id="credits" placeholder="Credits">
+
+<button onclick="addCourse()">Add</button>
+
+<h3>Courses</h3>
+
+<table id="courseTable">
+
+<thead>
+<tr>
+<th>ID</th>
+<th>Name</th>
+<th>Department</th>
+<th>Credits</th>
+<th>Action</th>
+</tr>
+</thead>
+
+<tbody></tbody>
+
+</table>
+
+<h3>Enroll Student</h3>
+
+<input id="courseId" placeholder="Course ID">
+<input id="studentName" placeholder="Student Name">
+
+<button onclick="enrollCourse()">Enroll</button>
+
+<h3>Enrollment History</h3>
+
+<table id="enrollTable">
+
+<thead>
+<tr>
+<th>ID</th>
+<th>Course</th>
+<th>Student</th>
+<th>Date</th>
+<th>Action</th>
+</tr>
+</thead>
+
+<tbody></tbody>
+
+</table>
+
+</div>
+
+<script>
+
+const courseApi="http://localhost:5245/api/course";
+const enrollApi="http://localhost:5245/api/enrollment";
+
+
+/* LOAD COURSES */
+
+async function loadCourses(){
+
+const res = await fetch(courseApi);
+if(!res.ok){
+    console.error("Course API error");
+    return;
+}
+const data = await res.json();
+
+const table=document.querySelector("#courseTable tbody");
+
+table.innerHTML="";
+
+data.forEach(c=>{
+
+table.innerHTML+=`
+<tr>
+
+<td>${c.courseId}</td>
+<td>${c.courseName}</td>
+<td>${c.departmentId}</td>
+<td>${c.credits}</td>
+
+<td>
+<button onclick="deleteCourse(${c.courseId})">Delete</button>
+</td>
+
+</tr>
+`;
+
+});
+
+}
+
+
+/* ADD COURSE */
+
+async function addCourse(){
+const name=document.getElementById("name").value.trim();
+const dept=document.getElementById("dept").value;
+const credits=document.getElementById("credits").value;
+
+if(!name || !dept || !credits){
+alert("Please fill all fields");
+return;
+}
+
+const course={
+
+courseName:name,
+departmentId:parseInt(dept),
+credits:parseInt(credits),
+seatsAvailable:true
+
+};
+
+await fetch(courseApi,{
+method:"POST",
+headers:{ "Content-Type":"application/json"},
+body:JSON.stringify(course)
+});
+
+document.getElementById("name").value="";
+document.getElementById("dept").value="";
+document.getElementById("credits").value="";
+
+loadCourses();
+
+}
+
+
+/* DELETE COURSE */
+
+async function deleteCourse(id){
+
+await fetch(`${courseApi}/${id}`,{
+method:"DELETE"
+});
+
+loadCourses();
+
+}
+
+
+/* SEARCH */
+
+function searchCourse(){
+
+const keyword=document.getElementById("search").value.toLowerCase();
+
+const rows=document.querySelectorAll("#courseTable tbody tr");
+
+rows.forEach(r=>{
+const text=r.innerText.toLowerCase();
+r.style.display=text.includes(keyword)?"":"none";
+});
+
+}
+
+
+/* ENROLL COURSE */
+
+async function enrollCourse(){
+
+const courseId=document.getElementById("courseId").value;
+const studentName=document.getElementById("studentName").value;
+
+if(!courseId || !studentName){
+alert("Enter Course ID and Student Name");
+return;
+}
+
+const enrollment={
+
+courseId:parseInt(courseId),
+studentName:studentName
+
+};
+
+await fetch(`${enrollApi}/enroll`,{
+
+method:"POST",
+headers:{ "Content-Type":"application/json"},
+body:JSON.stringify(enrollment)
+
+});
+
+document.getElementById("courseId").value="";
+document.getElementById("studentName").value="";
+
+loadEnrollments();
+
+}
+
+
+/* LOAD ENROLLMENTS */
+
+async function loadEnrollments(){
+
+const res=await fetch(enrollApi);
+const data=await res.json();
+
+const table=document.querySelector("#enrollTable tbody");
+
+table.innerHTML="";
+
+data.forEach(e=>{
+const student=e.studentName ?? "N/A";
+const date=e.enrollmentDate 
+    ? new Date(e.enrollmentDate).toLocaleString() 
+    : "";
+
+table.innerHTML+=`
+<tr>
+
+<td>${e.enrollmentId}</td>
+<td>${e.courseId}</td>
+<td>${student}</td>
+<td>${date}</td>
+
+<td>
+<button onclick="dropCourse(${e.enrollmentId})">Drop</button>
+</td>
+
+</tr>
+`;
+
+});
+
+}
+
+
+/* DROP COURSE */
+
+async function dropCourse(id){
+
+await fetch(`${enrollApi}/${id}`,{
+method:"DELETE"
+});
+
+loadEnrollments();
+
+}
+
+
+/* INITIAL LOAD */
+
+loadCourses();
+loadEnrollments();
+
+</script>
+
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Smart Course Management</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#f4f4f4;
+padding:40px;
+}
+
+.container{
+width:900px;
+margin:auto;
+background:white;
+padding:20px;
+}
+
+input,button{
+padding:8px;
+margin:5px;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+margin-top:20px;
+}
+
+th,td{
+border:1px solid #ccc;
+padding:10px;
+text-align:center;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Smart Course Management System</h2>
+
+<input id="search" placeholder="Search course">
+<button onclick="searchCourse()">Search</button>
+
+<h3>Add Course</h3>
+
+<input id="name" placeholder="Course Name">
+<input id="dept" placeholder="CourseID">
+<input id="credits" placeholder="Credits">
+
+<button onclick="addCourse()">Add</button>
+
+<h3>Courses</h3>
+
+<table id="courseTable">
+
+<thead>
+<tr>
+<th>ID</th>
+<th>Name</th>
+<th>Department</th>
+<th>Credits</th>
+<th>Action</th>
+</tr>
+</thead>
+
+<tbody></tbody>
+
+</table>
+
+<h3>Enroll Student</h3>
+
+<input id="courseId" placeholder="Course ID">
+<input id="studentName" placeholder="Student Name">
+
+<button onclick="enrollCourse()">Enroll</button>
+
+<h3>Enrollment History</h3>
+
+<table id="enrollTable">
+
+<thead>
+<tr>
+<th>ID</th>
+<th>Course</th>
+<th>Student</th>
+<th>Date</th>
+<th>Action</th>
+</tr>
+</thead>
+
+<tbody></tbody>
+
+</table>
+
+</div>
+
+<script>
+
+const courseApi="http://localhost:5245/api/course";
+const enrollApi="http://localhost:5245/api/enrollment";
+
+
+/* LOAD COURSES */
+
+async function loadCourses(){
+
+const res = await fetch(courseApi);
+if(!res.ok){
+    console.error("Course API error");
+    return;
+}
+const data = await res.json();
+
+const table=document.querySelector("#courseTable tbody");
+
+table.innerHTML="";
+
+data.forEach(c=>{
+
+table.innerHTML+=`
+<tr>
+
+<td>${c.courseId}</td>
+<td>${c.courseName}</td>
+<td>${c.departmentId}</td>
+<td>${c.credits}</td>
+
+<td>
+<button onclick="deleteCourse(${c.courseId})">Delete</button>
+</td>
+
+</tr>
+`;
+
+});
+
+}
+
+
+/* ADD COURSE */
+
+async function addCourse(){
+const name=document.getElementById("name").value.trim();
+const dept=document.getElementById("dept").value;
+const credits=document.getElementById("credits").value;
+
+if(!name || !dept || !credits){
+alert("Please fill all fields");
+return;
+}
+
+const course={
+
+courseName:name,
+departmentId:parseInt(dept),
+credits:parseInt(credits),
+seatsAvailable:true
+
+};
+
+await fetch(courseApi,{
+method:"POST",
+headers:{ "Content-Type":"application/json"},
+body:JSON.stringify(course)
+});
+
+document.getElementById("name").value="";
+document.getElementById("dept").value="";
+document.getElementById("credits").value="";
+
+loadCourses();
+
+}
+
+
+/* DELETE COURSE */
+
+async function deleteCourse(id){
+
+await fetch(`${courseApi}/${id}`,{
+method:"DELETE"
+});
+
+loadCourses();
+
+}
+
+
+/* SEARCH */
+
+function searchCourse(){
+
+const keyword=document.getElementById("search").value.toLowerCase();
+
+const rows=document.querySelectorAll("#courseTable tbody tr");
+
+rows.forEach(r=>{
+const text=r.innerText.toLowerCase();
+r.style.display=text.includes(keyword)?"":"none";
+});
+
+}
+
+
+/* ENROLL COURSE */
+
+async function enrollCourse(){
+
+const courseId=document.getElementById("courseId").value;
+const studentName=document.getElementById("studentName").value;
+
+if(!courseId || !studentName){
+alert("Enter Course ID and Student Name");
+return;
+}
+
+const enrollment={
+
+courseId:parseInt(courseId),
+studentName:studentName
+
+};
+
+await fetch(`${enrollApi}/enroll`,{
+
+method:"POST",
+headers:{ "Content-Type":"application/json"},
+body:JSON.stringify(enrollment)
+
+});
+
+document.getElementById("courseId").value="";
+document.getElementById("studentName").value="";
+
+loadEnrollments();
+
+}
+
+
+/* LOAD ENROLLMENTS */
+
+async function loadEnrollments(){
+
+const res=await fetch(enrollApi);
+const data=await res.json();
+
+const table=document.querySelector("#enrollTable tbody");
+
+table.innerHTML="";
+
+data.forEach(e=>{
+const student=e.studentName ?? "N/A";
+const date=e.enrollmentDate 
+    ? new Date(e.enrollmentDate).toLocaleString() 
+    : "";
+
+table.innerHTML+=`
+<tr>
+
+<td>${e.enrollmentId}</td>
+<td>${e.courseId}</td>
+<td>${student}</td>
+<td>${date}</td>
+
+<td>
+<button onclick="dropCourse(${e.enrollmentId})">Drop</button>
+</td>
+
+</tr>
+`;
+
+});
+
+}
+
+
+/* DROP COURSE */
+
+async function dropCourse(id){
+
+await fetch(`${enrollApi}/${id}`,{
+method:"DELETE"
+});
+
+loadEnrollments();
+
+}
+
+
+/* INITIAL LOAD */
+
+loadCourses();
+loadEnrollments();
+
+</script>
+
+</body>
+</html>
+

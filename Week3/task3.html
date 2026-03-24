@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Secure Banking App</title>
+</head>
+<body>
+
+<h2>Secure Banking Dashboard</h2>
+<p>Right-click is disabled for security reasons.</p>
+
+<script>
+document.addEventListener("contextmenu", function(e){
+
+  e.preventDefault();
+
+  console.warn("Right click disabled for security");
+
+});
+</script>
+
+</body>
+</html>

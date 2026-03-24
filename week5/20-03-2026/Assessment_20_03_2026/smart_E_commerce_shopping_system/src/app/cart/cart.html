@@ -1,0 +1,12 @@
+<div class="cart-box">
+
+  <div class="cart-item" *ngFor="let item of cart">
+    <span>{{item.name}} - {{item.quantity}} x ₹{{item.price}}</span>
+    <button (click)="remove.emit(item.id)">Remove</button>
+  </div>
+
+  <div class="total">Total: ₹{{total()}}</div>
+
+  <button class="clear-btn" (click)="clear.emit()">Clear Cart</button>
+
+</div>

@@ -1,0 +1,30 @@
+<h2>Student Dashboard</h2>
+
+<div *ngFor="let s of students" class="card"
+     [ngClass]="{ 'topper': s.marks >= 85 }">
+
+  <h3>{{ s.name }}</h3>
+  <p>Marks: {{ s.marks }}</p>
+
+  <!-- Pass -->
+  <p *ngIf="s.marks >= 40; else failBlock"
+     [ngStyle]="{ 'color': 'green', 'font-weight': 'bold' }">
+    Pass
+  </p>
+
+  <!-- Fail -->
+  <ng-template #failBlock>
+    <p [ngStyle]="{ 'color': 'red', 'font-weight': 'bold' }">
+      Fail
+    </p>
+  </ng-template>
+
+  <!-- Grade -->
+  <div [ngSwitch]="true">
+  <p *ngSwitchCase="s.marks >= 85">Grade: A</p>
+  <p *ngSwitchCase="s.marks >= 70 && s.marks < 85">Grade: B</p>
+  <p *ngSwitchCase="s.marks >= 50 && s.marks < 70">Grade: C</p>
+  <p *ngSwitchDefault>Grade: D</p>
+</div>
+
+</div>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Button Click Analytics</title>
+</head>
+
+<body>
+
+<h2>User Action Tracking</h2>
+
+<button onclick="trackClick('Buy Now')">Buy Now</button>
+<button onclick="trackClick('Add Wishlist')">Add Wishlist</button>
+
+<p id="result"></p>
+
+<script>
+
+// Simple Logger
+const logger = {
+log: function(level, message, action){
+console.log(level + " - " + message + " " + action);
+}
+};
+
+function trackClick(action){
+
+logger.log("INFO","User Action:",action);
+
+document.getElementById("result").innerHTML =
+"User clicked: " + action;
+
+}
+
+</script>
+
+</body>
+</html>

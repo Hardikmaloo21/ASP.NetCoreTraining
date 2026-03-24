@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>JavaScript Array Methods Tasks</title>
+
+<style>
+
+body{
+    font-family: Arial, sans-serif;
+    background:#f4f6f8;
+    margin:0;
+    padding:40px;
+}
+
+.container{
+    max-width:800px;
+    margin:auto;
+}
+
+h1{
+    text-align:center;
+    margin-bottom:40px;
+}
+
+.card{
+    background:white;
+    padding:20px;
+    border-radius:8px;
+    margin-bottom:25px;
+    box-shadow:0 2px 8px rgba(0,0,0,0.1);
+}
+
+button{
+    padding:10px 18px;
+    background:#007BFF;
+    color:white;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#0056b3;
+}
+
+.output{
+    margin-top:10px;
+    font-weight:bold;
+    color:#2e7d32;
+    background:#f1f8e9;
+    padding:8px;
+    border-radius:4px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>JavaScript Array Methods Tasks</h1>
+
+
+<div class="card">
+<h2>Question 16 – Student Grade Processing</h2>
+<button onclick="showQ16()">Show Output</button>
+<p class="output" id="out16"></p>
+</div>
+
+
+<div class="card">
+<h2>Question 17 – Online Order Filtering</h2>
+<button onclick="showQ17()">Show Output</button>
+<p class="output" id="out17"></p>
+</div>
+
+
+<div class="card">
+<h2>Question 18 – Shopping Cart Total</h2>
+<button onclick="showQ18()">Show Output</button>
+<p class="output" id="out18"></p>
+</div>
+
+
+<div class="card">
+<h2>Question 19 – E-Commerce Price Update</h2>
+<button onclick="showQ19()">Show Output</button>
+<p class="output" id="out19"></p>
+</div>
+
+
+<div class="card">
+<h2>Question 20 – Pass Students Only</h2>
+<button onclick="showQ20()">Show Output</button>
+<p class="output" id="out20"></p>
+</div>
+
+</div>
+
+
+<script>
+
+function showQ16(){
+const marks = [65,70,80,55,90];
+const result = marks.map(function(m){
+return m + 5;
+});
+document.getElementById("out16").innerHTML = result;
+}
+
+function showQ17(){
+const orders = [450,1200,700,3000,1500];
+const result = orders.filter(function(o){
+return o > 1000;
+});
+document.getElementById("out17").innerHTML = result;
+}
+
+function showQ18(){
+const cart = [500,1200,800,1500];
+const result = cart.reduce(function(total,item){
+return total + item;
+},0);
+document.getElementById("out18").innerHTML = "Total: ₹" + result;
+}
+
+function showQ19(){
+const prices = [1200,800,1500,2000];
+const result = prices.map(function(p){
+return p * 0.9;
+});
+document.getElementById("out19").innerHTML = result;
+}
+
+function showQ20(){
+const marks = [35,67,48,90,55,30];
+const result = marks.filter(function(m){
+return m > 50;
+});
+document.getElementById("out20").innerHTML = result;
+}
+
+</script>
+
+</body>
+</html>

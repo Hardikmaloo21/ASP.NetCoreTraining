@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Using Modules in JS</title>
+
+<style>
+body{
+font-family: Arial;
+padding:40px;
+}
+
+h2{
+margin-top:40px;
+}
+
+.container{
+display:flex;
+gap:40px;
+}
+
+.box{
+border:1px solid #ccc;
+padding:20px;
+width:300px;
+border-radius:8px;
+}
+
+button{
+margin-top:10px;
+padding:6px 12px;
+}
+
+.result{
+margin-top:10px;
+font-weight:bold;
+color:blue;
+}
+</style>
+</head>
+
+<body>
+
+<h1>USING MODULES IN JS</h1>
+
+<div class="container">
+
+<!-- Project 1 -->
+<div class="box">
+<h2>Project 1 (Before Modules)</h2>
+
+<p id="date1"></p>
+
+<input type="text" id="email1" placeholder="Enter Email">
+<br>
+<button onclick="checkEmail()">Check Email</button>
+
+<p class="result" id="result1"></p>
+</div>
+
+<!-- Project 2 -->
+<div class="box">
+<h2>Project 2 (Before Modules)</h2>
+
+<p id="date2"></p>
+
+<input type="text" id="email2" placeholder="Enter Email">
+<br>
+<button onclick="checkEmail2()">Check Email</button>
+
+<p class="result" id="result2"></p>
+</div>
+
+<!-- Project 3 -->
+<div class="box">
+<h2>After Using Modules</h2>
+
+<p id="date3"></p>
+
+<input type="text" id="email3" placeholder="Enter Email">
+<br>
+<button onclick="checkEmail3()">Check Email</button>
+
+<p class="result" id="result3"></p>
+</div>
+
+</div>
+
+<script>
+
+/// BEFORE MODULES PROJECT 1
+function formatDate(date){
+    return `${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()}`;
+}
+
+function validateEmail(email){
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
+function checkEmail(){
+    const email=document.getElementById('email1').value;
+    const result=validateEmail(email) ? 'Valid Email' : 'Invalid Email';
+    document.getElementById('result1').innerText=result;
+}
+
+document.getElementById("date1").innerText=formatDate(new Date());
+
+
+/// BEFORE MODULES PROJECT 2
+function formatDate2(date){
+    return `${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()}`;
+}
+
+function validateEmail2(email){
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
+function checkEmail2(){
+    const email=document.getElementById('email2').value;
+    const result=validateEmail2(email) ? 'Valid Email' : 'Invalid Email';
+    document.getElementById('result2').innerText=result;
+}
+
+document.getElementById("date2").innerText=formatDate2(new Date());
+
+
+/// AFTER USING MODULE STYLE
+const Utils={
+formatDate(date){
+return `${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()}`;
+},
+
+validateEmail(email){
+return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+};
+
+document.getElementById("date3").innerText=Utils.formatDate(new Date());
+
+function checkEmail3(){
+const email=document.getElementById('email3').value;
+const result=Utils.validateEmail(email) ? 'Valid Email' : 'Invalid Email';
+document.getElementById('result3').innerText=result;
+}
+
+</script>
+
+</body>
+</html>

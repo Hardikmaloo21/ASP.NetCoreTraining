@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Leave Management System</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Leave Management System</h2>
+
+<!-- LOGIN -->
+<div id="loginSection">
+
+<h3>Login</h3>
+
+<input id="loginUsername" placeholder="Username">
+<input id="loginPassword" type="password" placeholder="Password">
+
+<button onclick="login()">Login</button>
+
+<p>Don't have account?</p>
+<button onclick="showRegister()">Register</button>
+
+</div>
+
+
+<!-- REGISTER -->
+<div id="registerSection" class="hidden">
+
+<h3>Register</h3>
+
+<input id="regUsername" placeholder="Username">
+<input id="regPassword" type="password" placeholder="Password">
+
+<select id="regRole">
+<option>Employee</option>
+<option>Manager</option>
+<option>Admin</option>
+</select>
+
+<button onclick="register()">Register</button>
+
+<button onclick="showLogin()">Back</button>
+
+</div>
+
+
+<!-- DASHBOARD -->
+<div id="dashboardSection" class="hidden">
+
+<h3>Dashboard</h3>
+
+<button onclick="showApplyLeave()">Apply Leave</button>
+<button onclick="loadLeaves()">View Leaves</button>
+<button onclick="logout()">Logout</button>
+
+</div>
+
+
+<!-- APPLY LEAVE -->
+<div id="applySection" class="hidden">
+
+<h3>Apply Leave</h3>
+
+<input id="leaveType" placeholder="Leave Type">
+<input type="date" id="startDate">
+<input type="date" id="endDate">
+<input id="reason" placeholder="Reason">
+
+<button onclick="applyLeave()">Submit</button>
+<button onclick="showDashboard()">Back</button>
+
+</div>
+
+
+<!-- LEAVE LIST -->
+<div id="leaveSection" class="hidden">
+
+<h3>Leave Requests</h3>
+
+<table>
+
+<thead>
+<tr>
+<th>ID</th>
+<th>Type</th>
+<th>Status</th>
+<th>Action</th>
+</tr>
+</thead>
+
+<tbody id="leaveTable"></tbody>
+
+</table>
+
+<button onclick="showDashboard()">Back</button>
+
+</div>
+
+</div>
+
+<script src="js/script.js"></script>
+
+</body>
+</html>

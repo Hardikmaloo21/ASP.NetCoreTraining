@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Like Product</title>
+</head>
+<body>
+
+<img id="product" src="https://fastly.picsum.photos/id/231/200/200.jpg?hmac=lUSm6Na5VxIhLKub6Y3JaBOAwCjkimAi-zHEOInwL58">
+<p>Likes: <span id="count">0</span></p>
+
+<script>
+let likes = 0;
+
+document.getElementById("product").addEventListener("dblclick", function(){
+
+    likes++;
+
+    document.getElementById("count").innerText = likes;
+
+    console.log("Product liked", likes);
+
+});
+</script>
+
+</body>
+</html>

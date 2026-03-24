@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Using Import Export</title>
+</head>
+
+<body>
+
+<script type="module">
+
+// Creating a module as a string
+const Utils = `
+export const PI = 3.14;
+
+export function add(a,b){
+    return a + b;
+}
+
+export function subtract(a,b){
+    return a - b;
+}
+
+export function multiply(a,b){
+    return a * b;
+}
+
+export function divide(a,b){
+    if(b == 0){
+        throw new Error('Cannot divide by zero');
+    }
+    return a / b;
+}
+`;
+
+// Convert string → JavaScript module file
+const blob = new Blob([Utils], { type: "text/javascript" });
+
+// Create a temporary URL for the module
+const url = URL.createObjectURL(blob);
+
+// Import the module dynamically
+import(url).then(module => {
+
+    console.log("PI:", module.PI);
+    console.log("Add:", module.add(5,3));
+    console.log("Subtract:", module.subtract(10,4));
+    console.log("Multiply:", module.multiply(3,4));
+    console.log("Divide:", module.divide(10,2));
+
+}).catch(err => console.error(err));
+
+</script>
+
+</body>
+</html>

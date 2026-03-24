@@ -1,0 +1,43 @@
+h2 {
+  text-align: center;
+  color: #1e40af;
+}
+
+.cart-box {
+  background: white;
+  width: 60%;
+  margin: 20px auto;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+}
+
+.cart-item button {
+  background: red;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.total {
+  font-weight: bold;
+  text-align: center;
+  margin-top: 15px;
+}
+
+.clear-btn {
+  display: block;
+  margin: 10px auto;
+  background: #ef4444;
+  color: white;
+  padding: 7px 15px;
+  border-radius: 5px;
+  border: none;
+}

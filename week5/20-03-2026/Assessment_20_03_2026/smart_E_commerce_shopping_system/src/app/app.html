@@ -1,0 +1,25 @@
+<h1>Smart E-Commerce</h1>
+
+<nav>
+  <button (click)="page='products'">Products</button>
+  <button (click)="page='checkout'">Checkout</button>
+  <button (click)="page='dashboard'">Dashboard</button>
+</nav>
+
+<div *ngIf="page==='products'">
+  <app-product (add)="addToCart($event)"></app-product>
+
+  <app-cart 
+    [cart]="cart"
+    (remove)="removeItem($event)"
+    (clear)="clearCart()">
+  </app-cart>
+</div>
+
+<div *ngIf="page==='checkout'">
+  <app-checkout></app-checkout>
+</div>
+
+<div *ngIf="page==='dashboard'">
+  <app-dashboard [cart]="cart"></app-dashboard>
+</div>

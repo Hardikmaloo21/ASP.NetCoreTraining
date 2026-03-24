@@ -1,0 +1,23 @@
+import { Component, signal } from '@angular/core';
+import { RouterOutlet , RouterLink} from '@angular/router';
+
+@Component({
+  selector: 'app-root',
+  imports: [RouterOutlet, RouterLink],
+  template: `
+  <h1> Angular routing demo</h1>
+
+  <nav>
+    <a routerLink="/home">Home</a><br>
+    <a routerLink="/products">Products</a><br>
+    <a routerLink="/contact">Contact</a>
+  </nav>
+
+  <hr>
+
+  <router-outlet></router-outlet>
+  `
+})
+export class App {
+  protected readonly title = signal('routing_demo');
+}

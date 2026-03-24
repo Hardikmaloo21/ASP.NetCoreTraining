@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Load Performance Monitor</title>
+</head>
+
+<body>
+
+<h2>Page Load Performance Monitor</h2>
+
+<p id="result">Loading...</p>
+
+<script>
+
+// Simple Logger
+const logger = {
+log: function(level, message, data){
+console.log(level + " - " + message + " " + data);
+}
+};
+
+const start = performance.now();
+
+window.onload = function(){
+
+const end = performance.now();
+
+const loadTime = end - start;
+
+logger.log("INFO","Page Load Time:", loadTime + " ms");
+
+document.getElementById("result").innerHTML =
+"Page Load Time: " + loadTime.toFixed(2) + " ms";
+
+}
+
+</script>
+
+</body>
+</html>

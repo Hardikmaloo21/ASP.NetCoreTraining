@@ -1,0 +1,21 @@
+<h2>Products</h2>
+
+<input [(ngModel)]="search" placeholder="Search">
+<select [(ngModel)]="category">
+  <option value="">All</option>
+  <option>Electronics</option>
+  <option>Fashion</option>
+</select>
+
+<div class="grid">
+  <div class="card" *ngFor="let p of filtered()">
+    <img [src]="p.image">
+    <h3>{{p.name}}</h3>
+    <p>₹{{p.price}}</p>
+    <p>{{p.category}}</p>
+    <p>⭐ {{p.rating}}</p>
+
+    <input type="number" [(ngModel)]="p.quantity">
+    <button (click)="addToCart(p)">Add</button>
+  </div>
+</div>

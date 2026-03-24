@@ -1,0 +1,33 @@
+<input id="email" placeholder="Enter Email">
+<button onclick="validateForm()">Submit</button>
+
+<script>
+// Logger object
+const logger = {
+  log: function(level, message, data) {
+    const logData = {
+      level: level,
+      message: message,
+      data: data,
+      time: new Date().toISOString()
+    };
+
+    fetch("https://example.com/api/logs", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(logData)
+    });
+  }
+};
+
+function validateForm() {
+  const email = document.getElementById("email").value;
+
+  if (!email.includes("@")) {
+    logger.log("WARN", "Invalid Email Entered", { email: email });
+    alert("Invalid email");
+  }
+}
+</script>

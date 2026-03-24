@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Login Tracker</title>
+</head>
+<body>
+
+<input id="username" placeholder="Enter Username">
+<button onclick="login()">Login</button>
+
+<script>
+// Logger object
+const logger = {
+  log: function(level, message, data) {
+    const logData = {
+      level: level,
+      message: message,
+      data: data,
+      timestamp: new Date().toISOString()
+    };
+
+    // Send log to remote server
+    fetch("https://example.com/api/logs", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(logData)
+    })
+    .then(res => console.log("Log sent"))
+    .catch(err => console.error("Log failed", err));
+  }
+};
+
+// Login function
+function login() {
+  const user = document.getElementById("username").value;
+
+  logger.log("INFO", "User Login Attempt", { username: user });
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,21 @@
+<h2>Checkout</h2>
+
+<input placeholder="Name" [(ngModel)]="user.name" name="name">
+<input placeholder="Email" [(ngModel)]="user.email" name="email">
+
+<p>Gender</p>
+
+<label>
+  <input type="radio" name="gender" value="Male" [(ngModel)]="user.gender">
+  Male
+</label>
+
+<label>
+  <input type="radio" name="gender" value="Female" [(ngModel)]="user.gender">
+  Female
+</label>
+
+<select [(ngModel)]="user.payment" name="payment">
+  <option value="card">Card</option>
+  <option value="upi">UPI</option>
+</select>
