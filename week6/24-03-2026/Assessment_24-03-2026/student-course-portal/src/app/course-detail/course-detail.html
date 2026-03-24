@@ -1,0 +1,10 @@
+<h2>Course Details</h2>
+
+<div *ngIf="course">
+  <h3>{{ course.name }}</h3>
+  <p>{{ course.description }}</p>
+</div>
+
+<br>
+
+<a routerLink="/courses">⬅ Back to Courses</a>

@@ -1,9 +1,10 @@
+import { CommonModule } from '@angular/common';
 import { Component, signal } from '@angular/core';
 import { RouterOutlet , RouterLink} from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, RouterLink],
+  imports: [RouterOutlet, RouterLink , CommonModule],
   template: `
   <h1> Angular routing demo</h1>
 
