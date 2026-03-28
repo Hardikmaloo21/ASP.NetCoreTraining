@@ -1,0 +1,23 @@
+<div class="form">
+  <div class="input-group">
+    <input
+      type="text"
+      id="task-title"
+      [(ngModel)]="newTask.title"
+      required
+    />
+    <label class="floating-label" for="task-title">Task Title</label>
+  </div>
+
+  <label class="checkbox">
+    <input
+      type="checkbox"
+      [(ngModel)]="newTask.completed"
+    />
+    Mark as Completed
+  </label>
+
+  <button (click)="saveTask()">
+    {{ newTask.id ? 'Update Task' : 'Add New Task' }}
+  </button>
+</div>

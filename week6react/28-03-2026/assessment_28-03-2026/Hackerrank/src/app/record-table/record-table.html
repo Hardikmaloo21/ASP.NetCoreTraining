@@ -1,0 +1,123 @@
+<div class="bank-container">
+  <header class="bank-header">
+    <div class="bank-logo">
+      <span class="logo-icon">⬡</span>
+      <span class="logo-text">HACKERBANK</span>
+    </div>
+    <div class="account-info">
+      <span class="account-label">CHECKING ACCOUNT</span>
+      <span class="account-number">••••  ••••  4892</span>
+    </div>
+  </header>
+
+  <!-- Filter + Add Button Bar -->
+  <section class="filter-bar">
+    <div class="filter-group">
+      <label class="filter-label" for="dateInput">Filter by Date</label>
+      <input id="dateInput" class="date-input" type="date" [(ngModel)]="selectedDate" />
+    </div>
+    <button class="filter-btn" (click)="onFilter()">
+      <span class="btn-icon">⌕</span> Filter
+    </button>
+    <button class="add-btn" (click)="toggleForm()">
+      <span class="btn-icon">+</span> {{ showForm ? 'Cancel' : 'Add Transaction' }}
+    </button>
+  </section>
+
+  <!-- Add Transaction Form -->
+  <div class="add-form-wrapper" *ngIf="showForm">
+    <div class="add-form">
+      <h3 class="form-title">New Transaction</h3>
+      <div class="form-grid">
+
+        <div class="form-field">
+          <label>Date</label>
+          <input type="date" [(ngModel)]="newTransaction.date" class="form-input" />
+          <span class="field-hint">Format: YYYY-MM-DD</span>
+        </div>
+
+        <div class="form-field">
+          <label>Description</label>
+          <input type="text" [(ngModel)]="newTransaction.description"
+                 class="form-input" placeholder="e.g. AMAZON.COM PURCHASE" />
+        </div>
+
+        <div class="form-field">
+          <label>Type</label>
+          <select [(ngModel)]="newTransaction.type" class="form-input">
+            <option [ngValue]="0">Credit</option>
+            <option [ngValue]="1">Debit</option>
+          </select>
+        </div>
+
+        <div class="form-field">
+          <label>Amount ($)</label>
+          <input type="number" [(ngModel)]="newTransaction.amount"
+                 class="form-input" placeholder="e.g. 99.99" step="0.01" min="0" />
+        </div>
+
+        <div class="form-field">
+          <label>Balance</label>
+          <input type="text" [(ngModel)]="newTransaction.balance"
+                 class="form-input" placeholder="e.g. $5,000.00" />
+        </div>
+
+      </div>
+
+      <div class="form-error" *ngIf="formError">{{ formError }}</div>
+      <div class="form-success" *ngIf="formSuccess">{{ formSuccess }}</div>
+
+      <div class="form-actions">
+        <button class="submit-btn" (click)="addTransaction()" [disabled]="isSubmitting">
+          {{ isSubmitting ? 'Saving...' : 'Save Transaction' }}
+        </button>
+        <button class="cancel-btn" (click)="toggleForm()">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Transactions Table -->
+  <div class="table-wrapper">
+    <table class="transactions-table">
+      <thead>
+        <tr>
+          <th class="col-date">Date</th>
+          <th class="col-desc">Description</th>
+          <th class="col-type">Type</th>
+          <th class="col-amount sortable" (click)="onSortByAmount()">
+            Amount ($) <span class="sort-icon">↑</span>
+          </th>
+          <th class="col-balance">Balance</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let tx of displayedTransactions"
+            [class.credit]="tx.type === 0"
+            [class.debit]="tx.type === 1">
+          <td class="col-date">{{ tx.date }}</td>
+          <td class="col-desc">{{ tx.description }}</td>
+          <td class="col-type">
+            <span class="type-badge"
+                  [class.badge-credit]="tx.type === 0"
+                  [class.badge-debit]="tx.type === 1">
+              {{ tx.type === 0 ? 'Credit' : 'Debit' }}
+            </span>
+          </td>
+          <td class="col-amount"
+              [class.amount-credit]="tx.type === 0"
+              [class.amount-debit]="tx.type === 1">
+            {{ tx.type === 1 ? '-' : '+' }}{{ tx.amount | number:'1.2-2' }}
+          </td>
+          <td class="col-balance">{{ tx.balance }}</td>
+        </tr>
+        <tr *ngIf="displayedTransactions.length === 0" class="empty-row">
+          <td colspan="5">No transactions found.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <footer class="table-footer">
+    <span>{{ displayedTransactions.length }} transaction(s) shown</span>
+  </footer>
+</div>

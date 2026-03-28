@@ -1,0 +1,32 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Hackerrank", "Hackerrank", "{15C9B888-28FF-EA10-2F8C-93FD08E09B6D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "backend", "backend", "{EC28F98E-108F-9561-C716-43AAC413F8EA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HackerBank.API", "Hackerrank\backend\HackerBank.API\HackerBank.API.csproj", "{FA38F0A5-FBFD-13E4-A447-01BDA40E6F2F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FA38F0A5-FBFD-13E4-A447-01BDA40E6F2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA38F0A5-FBFD-13E4-A447-01BDA40E6F2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA38F0A5-FBFD-13E4-A447-01BDA40E6F2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA38F0A5-FBFD-13E4-A447-01BDA40E6F2F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{EC28F98E-108F-9561-C716-43AAC413F8EA} = {15C9B888-28FF-EA10-2F8C-93FD08E09B6D}
+		{FA38F0A5-FBFD-13E4-A447-01BDA40E6F2F} = {EC28F98E-108F-9561-C716-43AAC413F8EA}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6D12FD4E-B825-4A0F-B8A2-4243EC94A390}
+	EndGlobalSection
+EndGlobal

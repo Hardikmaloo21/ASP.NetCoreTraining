@@ -1,0 +1,12 @@
+<div class="container">
+  <h1>Task Manager</h1>
+
+  <app-task-form
+    [task]="selectedTask"
+    (taskSaved)="onSaved()">
+  </app-task-form>
+
+  <app-task-list
+    (editTask)="onEdit($event)">
+  </app-task-list>
+</div>
