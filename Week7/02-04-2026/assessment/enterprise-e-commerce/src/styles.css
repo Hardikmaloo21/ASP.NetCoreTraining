@@ -1,0 +1,130 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+/* Layout */
+body {
+  background-color: #f5f6fa;
+}
+
+/* Header */
+.header {
+  background: #1e293b;
+  color: white;
+  padding: 15px 20px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* Container */
+.container {
+  display: flex;
+  min-height: 85vh;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 220px;
+  background: #0f172a;
+  color: white;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.sidebar a {
+  color: #cbd5f5;
+  text-decoration: none;
+  padding: 8px;
+  border-radius: 5px;
+}
+
+.sidebar a:hover {
+  background: #1e293b;
+  color: white;
+}
+
+/* Content */
+.content {
+  flex: 1;
+  padding: 25px;
+}
+
+/* Footer */
+.footer {
+  background: #1e293b;
+  color: white;
+  text-align: center;
+  padding: 10px;
+}
+
+/* Card */
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* Button */
+.button {
+  padding: 10px 15px;
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background: #1d4ed8;
+}
+
+/* Input */
+.input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Auth Page */
+.auth-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.auth-card {
+  width: 300px;
+}
+
+/* Dashboard Nav */
+.dashboard-nav {
+  background: #e2e8f0;
+  padding: 10px;
+  display: flex;
+  gap: 15px;
+}
+
+.dashboard-nav a {
+  text-decoration: none;
+  color: #1e293b;
+}
+
+/* Product Grid */
+.product-grid {
+  display: flex;
+  gap: 20px;
+}
+
+.product-card {
+  width: 200px;
+}
