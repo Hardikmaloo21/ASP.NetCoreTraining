@@ -1,0 +1,101 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+body {
+  font-family: "Segoe UI", "Noto Sans Devanagari", sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #1e1e2f, #2a2a40);
+  color: white;
+}
+
+/* Layout */
+.container {
+  max-width: 1000px;
+  margin: auto;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #111827;
+  padding: 15px 30px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+}
+
+.nav-links a {
+  margin: 0 15px;
+  color: #ccc;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.nav-links a:hover {
+  color: #60a5fa;
+}
+
+/* Card UI */
+.card {
+  background: rgba(255,255,255,0.05);
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+  backdrop-filter: blur(10px);
+}
+
+/* Buttons */
+.btn {
+  margin: 5px;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  background: #3b82f6;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: #2563eb;
+  transform: translateY(-2px);
+}
+
+/* Headings */
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+h2 {
+  margin-bottom: 20px;
+  color: #9ca3af;
+}
+
+.lang-dropdown {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: none;
+  background: #1f2937;
+  color: white;
+  cursor: pointer;
+  outline: none;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.lang-dropdown:hover {
+  background: #374151;
+}
+
+.lang-dropdown option {
+  color: black;
+}
