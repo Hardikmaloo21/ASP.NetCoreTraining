@@ -11,11 +11,12 @@ class display_triangle
         Console.WriteLine("Enter the width of the triangle: ");
         width = Convert.ToInt32(Console.ReadLine());
 
-        for (int i = width; i >= 1; i--)
+        for (int i = 0; i < width; i++)
         {
-            for (int j = i; j >= 1; j--)
+            for (int j = 1; j <= i + 1; j++)
             {
                 Console.Write(number + " ");
+
             }
 
             Console.WriteLine();

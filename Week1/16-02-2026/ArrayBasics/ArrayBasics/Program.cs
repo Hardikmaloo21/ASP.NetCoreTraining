@@ -4,7 +4,7 @@ class Arrayprog
 {
     static void Main(string[] args)
     {
-        int[] arr = new int[6] { 5, 3, 8, 9, 0, 7 };
+        int[] arr = new int[6] { 5, 3, 8, 9, 0, 7  };
 
         Array.Sort(arr);
 

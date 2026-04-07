@@ -1,0 +1,199 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+/* THEMES */
+body.light {
+  background-color: #f1f5f9;
+  color: #0f172a;
+}
+
+body.dark {
+  background-color: #020617;
+  color: #e2e8f0;
+}
+
+/* LAYOUT */
+.app {
+  display: flex;
+  height: 100vh;
+}
+
+/* SIDEBAR */
+.sidebar {
+  width: 220px;
+  padding: 20px;
+}
+
+/* DARK */
+body.dark .sidebar {
+  background: #020617;
+  color: white;
+}
+
+/* LIGHT */
+body.light .sidebar {
+  background: white;
+  color: black;
+  border-right: 1px solid #e2e8f0;
+}
+
+/* SIDEBAR BUTTON */
+.sidebar button {
+  display: block;
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 6px;
+  border: none;
+  text-align: left;
+}
+
+/* DARK */
+body.dark .sidebar button {
+  background: transparent;
+  color: #cbd5f5;
+}
+
+body.dark .sidebar button:hover {
+  background: #1e293b;
+}
+
+/* LIGHT */
+body.light .sidebar button {
+  background: transparent;
+  color: #1e293b;
+}
+
+body.light .sidebar button:hover {
+  background: #e2e8f0;
+}
+
+/* MAIN */
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* TOPBAR */
+.topbar {
+  height: 60px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0 20px;
+  gap: 10px;
+}
+
+/* DARK */
+body.dark .topbar {
+  background: #020617;
+}
+
+/* LIGHT */
+body.light .topbar {
+  background: white;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+/* BUTTON */
+.topbar button {
+  background: #3b82f6;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  color: white;
+}
+
+/* CONTENT */
+.content {
+  padding: 20px;
+}
+
+/* CARD */
+.card {
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+/* DARK */
+body.dark .card {
+  background: #0f172a;
+}
+
+/* LIGHT */
+body.light .card {
+  background: white;
+  border: 1px solid #e2e8f0;
+}
+
+/* FORM */
+.form-row {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+/* INPUT */
+input {
+  padding: 8px;
+  border-radius: 6px;
+}
+
+/* DARK */
+body.dark input {
+  background: #1e293b;
+  border: 1px solid #334155;
+  color: white;
+}
+
+/* LIGHT */
+body.light input {
+  background: white;
+  border: 1px solid #cbd5e1;
+}
+
+/* TABLE */
+table {
+  width: 100%;
+  margin-top: 10px;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+}
+
+/* DARK */
+body.dark th {
+  background: #1e293b;
+}
+
+body.dark td {
+  border-bottom: 1px solid #334155;
+}
+
+/* LIGHT */
+body.light th {
+  background: #f1f5f9;
+}
+
+body.light td {
+  border-bottom: 1px solid #e2e8f0;
+}
+
+/* DELETE BUTTON */
+td button {
+  background: #ef4444;
+}
+
+td button:hover {
+  background: #dc2626;
+}

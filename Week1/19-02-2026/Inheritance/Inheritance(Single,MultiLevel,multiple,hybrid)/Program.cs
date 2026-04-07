@@ -8,6 +8,7 @@
         {
             Console.WriteLine("Enter your name: ");
             name = Console.ReadLine();
+            Console.WriteLine("Enter your age: ");
             age = int.Parse(Console.ReadLine());
         }
 

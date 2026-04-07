@@ -56,13 +56,7 @@ namespace Exercise1
         {
             Product product = new Product("Laptop", 101, new DateTime(2025, 12, 31), 50, "TechBrand", true);
             product.DisplayProductDetails();
-
-
-
         }
-
-
-
     }
 
 }

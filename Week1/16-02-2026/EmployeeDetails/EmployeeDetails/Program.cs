@@ -4,19 +4,30 @@ namespace ConsoleApp
 {
     class Employee
     {
+
+        /*
+
+        this are data members of the class Employee
+        These are auto-implemented properties:
+
+        Store employee details
+        get → read value
+        set → assign value
+
+        */
         public string Name { get; set; }
 
         public int ID { get; set; }
 
         public string Department { get; set; }
 
-        public double salary { get; set; }
+        public double Salary { get; set; }
 
-        public string Positon { get; set; }
+        public string Position { get; set; }
 
         public DateOnly DateofJoining { get; set; }
 
-
+        //this is method to get employee data from user input
         public void GetEmployeeData()
         {
             Console.WriteLine("Enter Employee Name: ");
@@ -29,10 +40,10 @@ namespace ConsoleApp
             Department = Console.ReadLine();
 
             Console.WriteLine("Enter the Employee Salary");
-            salary = Convert.ToDouble(Console.ReadLine());
+            Salary = Convert.ToDouble(Console.ReadLine());
 
             Console.WriteLine("Enter the Employee Position");
-            Positon = Console.ReadLine();
+            Position = Console.ReadLine();
 
             Console.WriteLine("Enter Employee D.O.J: ");
             DateofJoining = DateOnly.Parse(Console.ReadLine());
@@ -41,7 +52,8 @@ namespace ConsoleApp
 
 
         }
-
+        
+        //this is method to display employee data
         public void DisplayEmployeeData()
         {
             Console.WriteLine($"Employee Name: {Name}");

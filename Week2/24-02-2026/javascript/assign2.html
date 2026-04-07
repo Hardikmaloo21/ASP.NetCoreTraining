@@ -27,9 +27,12 @@
 function print(msg) { 
    document.getElementById("output").innerHTML += msg + "<br>"; 
 } 
-function clearOutput() { 
-   document.getElementById("output").innerHTML = ""; 
-} 
+// function clearOutput() { 
+//    document.getElementById("output").innerHTML = ""; 
+// } 
+const clearOutput = () => document.getElementById("output").innerHTML = "";
+
+
  
 // 1️⃣ Variables 
 function variableDemo() { 

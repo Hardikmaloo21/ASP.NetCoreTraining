@@ -7,6 +7,7 @@ namespace AccessModifierDemo
         {
             Console.WriteLine("It's Public");
         }
+
         private void PrivateMethod()
         {
             Console.WriteLine("It's Private");

@@ -11,6 +11,7 @@ namespace ArithmeticOperatrions
             Console.WriteLine("enter the second number: ");
             b = Convert.ToInt32(Console.ReadLine());
         }
+
         public void Add()
         {
             Console.WriteLine($"Addition: {a + b}");
