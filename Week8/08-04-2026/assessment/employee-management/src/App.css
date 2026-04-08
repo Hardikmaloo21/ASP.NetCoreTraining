@@ -1,0 +1,26 @@
+/* Hover effects & animations */
+
+button:hover { opacity: 0.88; }
+
+input:focus, select:focus {
+  border-color: #3b82f6 !important;
+  box-shadow: 0 0 0 3px #3b82f620;
+}
+
+table tbody tr:hover {
+  background: #1a2235;
+}
+
+@keyframes slideIn {
+  from { transform: translateX(40px); opacity: 0; }
+  to   { transform: translateX(0);    opacity: 1; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Scrollbar on modal */
+.modal-scroll::-webkit-scrollbar { width: 4px; }
+.modal-scroll::-webkit-scrollbar-thumb { background: #1e2d45; border-radius: 2px; }
