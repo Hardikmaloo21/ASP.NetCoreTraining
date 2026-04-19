@@ -8,6 +8,8 @@ import EmployeeForm from './components/EmployeeForm';
 import { logout } from './features/auth/authSlice';
 import { clearNotification, setActiveTab, setNotification } from './features/ui/uiSlice';
 
+
+
 export default function App() {
   const dispatch  = useDispatch();
   const isAuth    = useSelector(s => s.auth.isAuthenticated);

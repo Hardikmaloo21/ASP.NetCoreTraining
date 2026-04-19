@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Hardik\\Desktop\\Asp .net Core Training\\Week9\\case_studies\\StudentManagementSystem\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{F34453F3-58DA-4278-ABBC-0C2BDC19F407}|StudentAttendanceManagementSystem\\StudentAttendanceManagementSystem.csproj|c:\\users\\hardik\\desktop\\asp .net core training\\week9\\case_studies\\studentmanagementsystem\\studentattendancemanagementsystem\\controllers\\attendancecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F34453F3-58DA-4278-ABBC-0C2BDC19F407}|StudentAttendanceManagementSystem\\StudentAttendanceManagementSystem.csproj|solutionrelative:studentattendancemanagementsystem\\controllers\\attendancecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AttendanceController.cs",
+              "DocumentMoniker": "C:\\Users\\Hardik\\Desktop\\Asp .net Core Training\\Week9\\case_studies\\StudentManagementSystem\\StudentAttendanceManagementSystem\\Controllers\\AttendanceController.cs",
+              "RelativeDocumentMoniker": "StudentAttendanceManagementSystem\\Controllers\\AttendanceController.cs",
+              "ToolTip": "C:\\Users\\Hardik\\Desktop\\Asp .net Core Training\\Week9\\case_studies\\StudentManagementSystem\\StudentAttendanceManagementSystem\\Controllers\\AttendanceController.cs",
+              "RelativeToolTip": "StudentAttendanceManagementSystem\\Controllers\\AttendanceController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-13T07:10:42.056Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

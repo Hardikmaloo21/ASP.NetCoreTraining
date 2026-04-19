@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="StudentAdmissionManagementSystem/StudentAdmissionManagementSystem.csproj" />
+  <Project Path="StudentAttendanceManagementSystem/StudentAttendanceManagementSystem.csproj" />
+  <Project Path="StudentManagementSystem/StudentManagementSystem.csproj" />
+</Solution>
