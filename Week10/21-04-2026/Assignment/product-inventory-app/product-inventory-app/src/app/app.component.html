@@ -1,0 +1,77 @@
+<nav class="navbar">
+  <div class="logo">🛒 ZEN MART</div>
+  <input
+    type="text"
+    placeholder="Search products..."
+    [(ngModel)]="searchText"
+    (input)="applyFilter()"
+  />
+</nav>
+
+<div class="container">
+
+  <!-- 📊 Stats -->
+  <div class="stats">
+    <div class="stat-card total">Total: {{totalProducts}}</div>
+    <div class="stat-card in">In Stock: {{inStockCount}}</div>
+    <div class="stat-card out">Out of Stock: {{outStockCount}}</div>
+  </div>
+
+  <!-- 🎯 Category Chips -->
+  <div class="chips">
+    <span (click)="selectedCategory=''; applyFilter()">All</span>
+    <span (click)="selectedCategory='Electronics'; applyFilter()">Electronics</span>
+    <span (click)="selectedCategory='Clothing'; applyFilter()">Clothing</span>
+    <span (click)="selectedCategory='Education'; applyFilter()">Education</span>
+  </div>
+
+  <!-- ⚙ Controls -->
+  <div class="controls">
+    <button (click)="applyFilter()">Apply Filters</button>
+    <button (click)="resetFilters()">Reset</button>
+
+    <label>
+      <input type="checkbox"
+             [(ngModel)]="showInStockOnly"
+             (change)="applyFilter()">
+      In Stock Only
+    </label>
+  </div>
+  <div *ngIf="isLoading" class="loader">Loading...</div>
+
+  <!-- 📦 Table -->
+  <div class="table-card">
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Category</th>
+          <th (click)="sortByPrice()" class="sortable">
+          <th>Status</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let p of filteredProducts">
+          <td>{{p.id}}</td>
+          <td>{{p.name}}</td>
+          <td>{{p.category}}</td>
+          <td>₹{{p.price}}</td>
+          <td>
+            <span class="badge"
+                  [ngClass]="p.stock > 0 ? 'green' : 'red'">
+              {{p.stock > 0 ? 'Available' : 'Out of Stock'}}
+            </span>
+          </td>
+        </tr>
+        <tr *ngIf="filteredProducts.length === 0">
+  <td colspan="5" class="empty">
+    No products found 😕
+  </td>
+</tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
