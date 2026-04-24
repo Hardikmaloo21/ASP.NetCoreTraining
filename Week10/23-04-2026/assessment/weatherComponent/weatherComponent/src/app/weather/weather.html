@@ -1,0 +1,52 @@
+<div class="weather-container">
+
+  <h2 class="weather-title">Weather Search</h2>
+  <p class="weather-subtitle">Type a city name to get current weather</p>
+
+  <div class="search-wrapper">
+    <span class="search-icon">&#128269;</span>
+    <input
+      class="search-input"
+      data-test-id="app-input"
+      type="text"
+      [(ngModel)]="searchQuery"
+      placeholder="Enter city name..."
+    />
+  </div>
+
+  <!-- Weather Found -->
+  <div *ngIf="filteredResult" class="weather-details" data-test-id="weather-details">
+    <div class="city-banner">
+      <div class="city-icon">&#127748;</div>
+      <div>
+        <div class="city-name">{{ filteredResult.name }}</div>
+        <div class="city-label">Current weather</div>
+      </div>
+    </div>
+    <div class="stats-grid">
+      <div class="stat-item">
+        <span class="stat-emoji">🌡️</span>
+        <span class="stat-label">Temp</span>
+        <span class="stat-value" data-test-id="output-temperature">{{ filteredResult.temperature }}</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-emoji">💨</span>
+        <span class="stat-label">Wind</span>
+        <span class="stat-value" data-test-id="output-wind">{{ filteredResult.wind }}</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-emoji">💧</span>
+        <span class="stat-label">Humidity</span>
+        <span class="stat-value" data-test-id="output-humidity">{{ filteredResult.humidity }}</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- No Results -->
+  <div *ngIf="showNoResults" class="no-results" data-test-id="no-results">
+    <div class="no-results-icon">🔍</div>
+    <p class="no-results-title">No Results Found</p>
+    <span class="no-results-hint">Try searching for "London" or "Tokyo"</span>
+  </div>
+
+</div>
