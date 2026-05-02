@@ -1,0 +1,64 @@
+version: "3.9"
+
+services:
+
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: sqlserver
+    environment:
+      SA_PASSWORD: "EMS@Strong123"
+      ACCEPT_EULA: "Y"
+      MSSQL_PID: "Express"
+    ports:
+      - "1433:1433"
+    volumes:
+      - sqlserver_data:/var/opt/mssql
+    networks:
+      - ems-network
+    healthcheck:
+      test: ["CMD-SHELL",
+        "/opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P 'EMS@Strong123' -Q 'SELECT 1' -No"]
+      interval: 15s
+      timeout: 10s
+      retries: 10
+      start_period: 30s
+
+  ems-api:
+    build:
+      context: ./Api
+      dockerfile: Dockerfile
+    container_name: ems-api
+    environment:
+      - ConnectionStrings__DefaultConnection=Server=sqlserver,1433;Database=EMSDB;User Id=sa;Password=EMS@Strong123;TrustServerCertificate=True;
+      - ASPNETCORE_URLS=http://+:80
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "5001:80"
+    depends_on:
+      sqlserver:
+        condition: service_healthy
+    networks:
+      - ems-network
+
+  ems-mvc:
+    build:
+      context: ./Mvc
+      dockerfile: Dockerfile
+    container_name: ems-mvc
+    environment:
+      - ApiSettings__BaseUrl=http://ems-api:80
+      - ASPNETCORE_URLS=http://+:80
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "5000:80"
+    depends_on:
+      - ems-api
+    networks:
+      - ems-network
+
+networks:
+  ems-network:
+    driver: bridge
+
+volumes:
+  sqlserver_data:
