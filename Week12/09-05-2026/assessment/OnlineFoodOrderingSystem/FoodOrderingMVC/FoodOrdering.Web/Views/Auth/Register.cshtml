@@ -1,0 +1,77 @@
+@model FoodOrdering.Web.Models.ApplicationUser
+
+@{
+    ViewData["Title"] = "Register";
+}
+
+<div class="container mt-5">
+
+    <div class="row justify-content-center">
+
+        <div class="col-md-5">
+
+            <div class="card shadow">
+
+                <div class="card-body">
+
+                    <h3 class="text-center mb-4">
+                        Register
+                    </h3>
+
+                    <form method="post">
+
+                        <div class="mb-3">
+
+                            <label>Full Name</label>
+
+                            <input asp-for="FullName"
+                                   class="form-control"
+                                   required>
+
+                        </div>
+
+                        <div class="mb-3">
+
+                            <label>Email</label>
+
+                            <input asp-for="Email"
+                                   class="form-control"
+                                   required>
+
+                        </div>
+
+                        <div class="mb-3">
+
+                            <label>Password</label>
+
+                            <input type="password"
+                                   name="password"
+                                   class="form-control"
+                                   required>
+
+                        </div>
+
+                        <button class="btn btn-success w-100">
+                            Register
+                        </button>
+
+                    </form>
+
+                    <div class="text-center mt-3">
+
+                        <a asp-controller="Auth"
+                           asp-action="Login">
+                            Already Have Account?
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

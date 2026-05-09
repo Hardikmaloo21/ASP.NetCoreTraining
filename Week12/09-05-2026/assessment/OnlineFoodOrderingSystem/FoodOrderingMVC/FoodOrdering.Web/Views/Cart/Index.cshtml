@@ -1,0 +1,56 @@
+@model IEnumerable<FoodOrdering.Web.Models.CartItem>
+
+<div class="container mt-5">
+
+    <h2>Your Cart</h2>
+
+    <table class="table table-bordered mt-4">
+
+        <thead class="table-dark">
+
+            <tr>
+
+                <th>Food</th>
+
+                <th>Price</th>
+
+                <th>Quantity</th>
+
+                <th>Total</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+
+                    <td>@item.FoodItem.Name</td>
+
+                    <td>₹ @item.FoodItem.Price</td>
+
+                    <td>@item.Quantity</td>
+
+                    <td>
+                        ₹ @(item.Quantity * item.FoodItem.Price)
+                    </td>
+
+                </tr>
+            }
+
+        </tbody>
+
+    </table>
+
+    <a asp-controller="Cart"
+       asp-action="Checkout"
+       class="btn btn-success">
+
+        Checkout
+
+    </a>
+
+</div>

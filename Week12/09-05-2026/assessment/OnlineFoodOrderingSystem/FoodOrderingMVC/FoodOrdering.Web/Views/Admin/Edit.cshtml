@@ -1,0 +1,63 @@
+@model FoodOrdering.Web.Models.FoodItem
+
+<div class="container mt-5">
+
+    <div class="card shadow p-4 mx-auto"
+         style="max-width:700px;">
+
+        <h2>Edit Food Item</h2>
+
+        <form asp-action="Edit"
+              enctype="multipart/form-data">
+
+            <input type="hidden" asp-for="Id" />
+
+            <div class="mb-3">
+
+                <input asp-for="Name"
+                       class="form-control"
+                       placeholder="Food Name" />
+
+            </div>
+
+            <div class="mb-3">
+
+                <input asp-for="Description"
+                       class="form-control"
+                       placeholder="Description" />
+
+            </div>
+
+            <div class="mb-3">
+
+                <input asp-for="Category"
+                       class="form-control"
+                       placeholder="Category" />
+
+            </div>
+
+            <div class="mb-3">
+
+                <input asp-for="Price"
+                       class="form-control"
+                       placeholder="Price" />
+
+            </div>
+
+            <div class="mb-3">
+
+                <input type="file"
+                       name="imageFile"
+                       class="form-control" />
+
+            </div>
+
+            <button class="btn btn-warning w-100">
+                Update Food
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
