@@ -1,0 +1,29 @@
+services:
+  db:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: foodordering-db
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=YourPassword123
+    ports:
+      - "1433:1433"
+    volumes:
+      - foodordering-db-data:/var/opt/mssql
+
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: foodordering-web
+    depends_on:
+      - db
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=http://+:8080
+      - ConnectionStrings__DefaultConnection=Server=db;Database=FoodOrderingMVCDB;User Id=sa;Password=YourPassword123;TrustServerCertificate=True
+    ports:
+      - "8080:8080"
+
+volumes:
+  foodordering-db-data:
+
