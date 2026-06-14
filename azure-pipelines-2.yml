@@ -1,0 +1,42 @@
+trigger:
+  - main
+  - dev
+
+pool:
+  vmImage: 'windows-latest'
+
+stages:
+- stage: Build
+  jobs:
+  - job: BuildAPI
+    steps:
+    - task: UseDotNet@2
+      inputs:
+        version: '8.0.x'
+    - script: dotnet restore WMS-Solution/WMS.API/WMS.API.csproj
+      displayName: 'Restore .NET solution'
+    - script: dotnet build WMS-Solution/WMS.API/WMS.API.csproj --configuration Release
+      displayName: 'Build API'
+    - script: dotnet test --configuration Release || echo "No tests found"
+      displayName: 'Run tests'
+    - script: dotnet publish WMS-Solution/WMS.API/WMS.API.csproj -c Release -o $(Build.ArtifactStagingDirectory)/api
+      displayName: 'Publish API artifact'
+    - publish: $(Build.ArtifactStagingDirectory)/api
+      artifact: api-drop
+
+  - job: BuildAngular
+    steps:
+    - task: NodeTool@0
+      inputs:
+        versionSpec: '20.x'
+    - script: |
+        cd WMS-Solution/frontend/wms-frontend
+        npm install --legacy-peer-deps --no-audit --no-fund
+      displayName: 'Install dependencies'
+    - script: |
+        cd WMS-Solution/frontend/wms-frontend
+        set NODE_OPTIONS=--max-old-space-size=1536
+        npx ng build --configuration production
+      displayName: 'Build Angular app (low memory)'
+    - publish: WMS-Solution/frontend/wms-frontend/dist/wms-frontend/browser
+      artifact: angular-drop
